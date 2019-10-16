@@ -1,0 +1,34 @@
+<div class="login-bg">
+    <div class="logo"></div>
+    <form nz-form>
+        <nz-form-item class="title">
+            <span>安全运维管理平台</span>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control>
+                <nz-input-group [nzPrefix]="prefixUser">
+                    <input type="text" autocomplete="off" nz-input [(ngModel)]="user.username" name="username" placeholder="请输入账号" autocomplete="off">
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control>
+                <nz-input-group [nzPrefix]="prefixLock">
+                    <input type="password" autocomplete="new-password" nz-input [(ngModel)]="user.password" name="password" placeholder="请输入密码">
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="error">
+            <i nz-icon type="exclamation-circle" theme="fill" *ngIf="errorMsg"></i>
+            <i>{{errorMsg}}</i>
+        </nz-form-item>
+        <a routerLink="/auth/signup">没有账号？点击注册</a>
+        <nz-form-item>
+            <nz-form-control>
+                <button nz-button [nzType]="'primary'" (click)="login()" [disabled]="!user.username||!user.password">登录</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</div>
+<ng-template #prefixUser><i>账号丨</i></ng-template>
+<ng-template #prefixLock><i>密码丨</i></ng-template>
