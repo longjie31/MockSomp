@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 import zh from '@angular/common/locales/zh';
 import {registerLocaleData} from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 registerLocaleData(zh);
 
@@ -17,6 +18,8 @@ registerLocaleData(zh);
         AppComponent
     ],
     imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
         BrowserModule,
         FormsModule,
         HttpClientModule,

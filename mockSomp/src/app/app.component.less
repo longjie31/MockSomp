@@ -1,0 +1,383 @@
+/deep/ body {
+  padding: 0 !important;
+
+  //模块
+  soms-alarm,
+  soms-audit,
+  soms-flow,
+  soms-identity,
+  soms-monitor,
+  soms-plan,
+  soms-policy,
+  soms-privilege,
+  soms-report,
+  soms-resource,
+  soms-system,
+  soms-admin-welcome,
+  soms-http403,
+  soms-http404,
+  soms-http500 {
+    width: 100%;
+  }
+
+  soms-dashboard {
+    nz-sider {
+      background-color: #fff !important;
+    }
+  }
+
+  soms-admin {
+    nz-sider {
+      background-color: #3686d1 !important;
+    }
+  }
+
+  soms-audit {
+    nz-content {
+      height: calc(100% - 64px);
+      overflow-y: auto;
+    }
+  }
+
+  soms-report {
+    .ant-card-body {
+      height: 100%;
+    }
+  }
+
+  soms-system {
+    soms-system-client {
+      nz-content {
+        overflow-y: auto;
+      }
+    }
+    soms-system-dict {
+      nz-content {
+        overflow-y: auto;
+      }
+    }
+  }
+
+  //菜单
+  li:focus {
+    outline: none;
+  }
+
+  nz-layout, [nz-row], [nz-col] {
+    height: 100%;
+  }
+
+  nz-card {
+    height: calc(100% - 8px);
+  }
+
+  //顶部导航
+  nz-header {
+    + nz-layout {
+      padding-top: 16px;
+      padding-right: 16px;
+    }
+    [nz-menu] {
+      background-color: #16599f;
+    }
+  }
+  //侧边栏
+  nz-sider {
+    margin-right: 16px;
+
+    [nz-menu] {
+      margin-right: 0 !important;
+      color: #ffffff;
+      background-color: #3686d1;
+      overflow: auto;
+
+      [nz-menu-item] {
+        margin: 0 !important;
+        font-size: 16px;
+        height: 64px;
+        line-height: 64px;
+        &:hover {
+          background-color: rgba(230, 247, 255, 0.8);
+        }
+
+        [nz-icon] {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  //内容
+  nz-content {
+    background: #ffffff;
+    height: calc(100% - 65px);
+    margin-bottom: 8px;
+    overflow: hidden;
+
+    [nz-row], [nz-col] {
+      height: 100%;
+    }
+
+    nz-card {
+      height: 100%;
+
+      .ant-card-head {
+        .ant-card-extra {
+          width: 100%;
+          margin: 0;
+          padding: 12px 0;
+          nz-input-group {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  //Table
+  nz-table {
+    nz-table {
+      margin: 0 !important;
+    }
+
+    tbody > tr:nth-child(even) {
+      background-color: rgba(230, 247, 255, 0.3);;
+    }
+
+    thead {
+      [nz-icon] {
+        font-size: 18px;
+        width: 100%;
+      }
+    }
+
+    tbody {
+      td {
+        word-break: break-all;
+        -webkit-box-orient: vertical;
+      }
+
+      [nz-icon] {
+        font-size: 18px;
+        width: 28px;
+      }
+    }
+
+    [nz-icon][disabled] {
+      color: rgba(0, 0, 0, 0.25);
+      cursor: not-allowed;
+    }
+
+    nz-pagination li[title='100000'] {
+      display: none;
+    }
+  }
+
+  //Modal
+  nz-modal {
+    nz-table {
+      .ant-table-body {
+        overflow: auto;
+      }
+    }
+  }
+
+  //左侧弹窗
+  .ant-modal.left {
+    position: absolute;
+    padding: 0;
+    top: 0;
+    right: unset;
+    height: 100%;
+
+    .ant-modal-content {
+      height: 100%;
+
+      .ant-modal-body {
+        overflow: auto;
+        height: calc(100% - 110px);
+      }
+    }
+  }
+
+  //右侧弹窗
+  .ant-modal.right {
+    position: absolute;
+    padding: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+
+    .ant-modal-content {
+      height: 100%;
+
+      .ant-modal-body {
+        overflow: auto;
+        height: calc(100% - 110px);
+      }
+    }
+  }
+
+  //消息
+  .ant-message {
+    font-size: 16px;
+    .anticon {
+      font-size: 18px;
+    }
+  }
+
+  //表单
+  nz-input-group {
+    margin-bottom: 0;
+  }
+
+  form.search {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+
+    label {
+      font-size: 16px;
+      line-height: 40px;
+    }
+
+    nz-select, nz-range-picker {
+      margin-right: 16px;
+    }
+  }
+
+  form.msearch {
+    position: absolute;
+    top: 7px;
+    left: 194px;
+
+    label {
+      font-size: 16px;
+      line-height: 40px;
+    }
+
+    nz-select, nz-range-picker {
+      margin-right: 16px;
+    }
+  }
+
+  /deep/ .asearch {
+    z-index: 1;
+    position: absolute;
+    top: 142px;
+    right: 40px;
+    font-size: 24px;
+
+    button {
+      margin-left: 8px;
+    }
+  }
+
+  /deep/ .dsearch {
+    z-index: 1;
+    position: absolute;
+    top: 82px;
+    right: 25px;
+    font-size: 24px;
+
+    button {
+      margin-left: 8px;
+    }
+  }
+
+  // Serach
+  /deep/ nz-range-picker .ant-calendar-picker {
+    width: 360px !important;
+  }
+
+  // Tooltip
+  /deep/ .ant-tooltip {
+    max-width: 1024px;
+  }
+
+  //Exception
+  .soms-exception {
+    display: flex;
+    align-items: center;
+    height: 80%;
+    min-height: 500px;
+
+    .soms-exception-image-block {
+      flex: 0 0 62.5%;
+      width: 62.5%;
+      padding-right: 152px;
+      zoom: 1;
+
+      .soms-exception-image {
+        float: right;
+        width: 100%;
+        max-width: 430px;
+        height: 360px;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: contain;
+      }
+    }
+
+    .soms-exception-content {
+      flex: auto;
+
+      h1 {
+        margin-bottom: 24px;
+        color: #434e59;
+        font-weight: 600;
+        font-size: 72px;
+        line-height: 72px;
+      }
+
+      .soms-exception-desc {
+        margin-bottom: 16px;
+        color: rgba(0, 0, 0, 0.45);
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+  }
+
+  .alarm {
+    z-index: 1;
+    right: 16px;
+    bottom: 16px;
+    position: absolute;
+
+    .iconfont {
+      font-size: 50px;
+    }
+  }
+
+  .alarm-drawer {
+    .ant-drawer-body {
+      padding: 1px 0;
+      height: calc(100% - 108px);
+      overflow-y: auto;
+
+      .ant-alert-message {
+        word-break: break-all;
+      }
+    }
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid rgb(232, 232, 232);
+    padding: 10px 16px;
+    text-align: right;
+    left: 0;
+    background: #fff;
+  }
+
+  .ant-card-body {
+    height: calc(100% - 56px);
+    overflow-y: auto;
+  }
+  .ant-card-contain-grid:not(.ant-card-loading) .ant-card-body {
+    padding: 24px;
+  }
+}

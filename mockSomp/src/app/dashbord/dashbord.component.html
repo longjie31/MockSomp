@@ -1,0 +1,14 @@
+<nz-layout>
+    <nz-header>
+        <div class="logo"></div>
+        <ul nz-menu nzTheme="dark" nzMode="horizontal" class="menu">
+            <li nz-menu-item nzSelected>工作台</li>
+            <li nz-menu-item>控制台</li>
+            <li class="logout">
+                <a nzTitle="退出" nzPlacement="bottom" nz-tooltip (click)="logout()">
+                    <i nz-icon type="logout" theme="outline"></i>
+                </a>
+            </li>
+        </ul>
+    </nz-header>
+</nz-layout>
