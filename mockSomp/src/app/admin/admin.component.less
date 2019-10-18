@@ -1,0 +1,94 @@
+nz-header {
+  padding: 0;
+
+  .logo {
+    width: 120px;
+    height: 32px;
+    background-image: url("/assets/images/zkwl_logo.png");
+    background-size: 100% 100%;
+    margin: 16px 45px 16px 0;
+    float: left;
+    margin-left: 33px;
+  }
+
+  .menu {
+    line-height: 64px;
+
+    .logout, .user, .download, .task {
+      float: right;
+      padding: 0 16px 0 0;
+
+      i {
+        margin-top: 16px;
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+/deep/ [nz-menu]{
+  margin-bottom: 8px;
+}
+
+/deep/ .dashboard-drawer .ant-drawer-content {
+  .ant-drawer-wrapper-body {
+    overflow: unset !important;
+  }
+
+  .ant-drawer-body {
+    height: 100%;
+    padding: 0 20px;
+  }
+
+  nz-tabset {
+    height: 100%;
+
+    nz-list {
+      height: calc(100% - 120px);
+    }
+  }
+
+  .ant-tabs-tab {
+    width: 160px;
+    margin: 0 !important;
+    text-align: center;
+  }
+
+  .ant-tabs-content {
+    height: 100%;
+  }
+
+  nz-list {
+    height: calc(100% - 56px);
+    overflow: auto;
+
+    &.task-view-list {
+      height: calc(100% - 63px);
+
+      nz-list-item {
+        border-bottom: none !important;
+      }
+
+      .ant-list-item {
+        padding-bottom: 0;
+      }
+
+      .ant-timeline-item {
+        padding-bottom: 8px;
+      }
+
+      .ant-timeline-item-last > .ant-timeline-item-content {
+        min-height: 0;
+      }
+
+      [nzdashed] {
+        margin: 8px 0 0 0;
+      }
+    }
+
+    [nz-button] {
+      float: right;
+      margin: 8px;
+    }
+  }
+}

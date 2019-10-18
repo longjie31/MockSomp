@@ -13,6 +13,6 @@ export class AuthService {
 
     logout() {
         this.authScopeService.clearSession();
-        this.router.navigateByUrl('login').then();
+        this.router.navigateByUrl('/auth/login').then();
     }
 }

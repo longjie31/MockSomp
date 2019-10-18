@@ -1,0 +1,60 @@
+<nz-content>
+    <div nz-row>
+        <div nz-col nzSpan="4">
+            <nz-divider nzText="组织机构"></nz-divider>
+            <nz-button-group style="padding: 0 5px;">
+            <button nz-button nzType="primary" class="Orgbtn"><i nz-icon nzType="plus" nzTheme="outline"></i></button>
+            <button nz-button nzType="default" class="Orgbtn"><i nz-icon nzType="edit" nzTheme="outline"></i></button>
+            <button nz-button nzType="danger" class="Orgbtn"><i nz-icon nzType="delete" nzTheme="outline"></i></button>
+            </nz-button-group>
+            <nz-tree [nzData]="nodes" nzShowIcon [nzExpandedIcon]="expandedIconTpl">
+                <ng-template #expandedIconTpl let-node>
+                    <i nz-icon [nzType]="node.origin.icon" class="ant-tree-switcher-icon"></i>
+                </ng-template>
+            </nz-tree>
+            <nz-tree [nzData]="nodes" nzShowIcon [nzExpandedIcon]="mutiExpandedIconTpl">
+                <ng-template #mutiExpandedIconTpl let-node>
+                    <i *ngIf="!node.origin.isLeaf"
+                       nz-icon
+                       [nzType]="node.isExpanded ? 'folder-open' : 'folder'"
+                       class="ant-tree-switcher-line-icon"></i>
+                    <i *ngIf="node.origin.isLeaf" nz-icon nzType="file" class="ant-tree-switcher-line-icon"></i>
+                </ng-template>
+            </nz-tree>
+        </div>
+        <div nz-col nzSpan="20">
+            <nz-table
+                    [nzTitle]="'用户'"
+                    #rowSelectionTable
+                    nzShowSizeChanger
+                    [nzData]="listOfAllData"
+                    [nzPageSize]="12"
+                    (nzCurrentPageDataChange)="currentPageDataChange($event)"
+            >
+                <thead>
+                <tr>
+                    <th
+                            nzShowCheckbox
+                            nzShowRowSelection
+                            [nzSelections]="listOfSelection"
+                            [(nzChecked)]="isAllDisplayDataChecked"
+                            [nzIndeterminate]="isIndeterminate"
+                            (nzCheckedChange)="checkAll($event)"
+                    ></th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Address</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of rowSelectionTable.data">
+                    <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" (nzCheckedChange)="refreshStatus()"></td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.age }}</td>
+                    <td>{{ data.address }}</td>
+                </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</nz-content>

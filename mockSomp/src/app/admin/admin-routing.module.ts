@@ -1,16 +1,17 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {DashbordComponent} from './dashbord.component';
+import {AdminComponent} from './admin.component';
+import {PieComponent} from './pie/pie.component';
 
 
 const routes: Routes = [
     {
         path: '',
-        component: DashbordComponent,
+        component: AdminComponent,
         children: [
             {
-                path: 'user',
-                loadChildren: () => import ('./user/user.module').then(mod => mod.UserModule)
+                path: 'pie',
+                loadChildren: () => import('./pie/pie.module').then(mod => mod.PieModule)
             }
         ]
     }
@@ -20,5 +21,5 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class DashbordRoutingModule {
+export class AdminRoutingModule {
 }

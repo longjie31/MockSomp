@@ -13,9 +13,15 @@ const routes: Routes = [
         loadChildren: () => import('./dashbord/dashbord.module').then(mod => mod.DashbordModule)
     },
     {
+        path: 'admin',
+        canActivateChild: [AuthGuardService],
+        loadChildren: () => import('./admin/admin.module').then(mod => mod.AdminModule)
+    },
+    {
         path: '',
         redirectTo: 'dashboard',
-        pathMatch: 'full'},
+        pathMatch: 'full'
+    }
 ];
 
 @NgModule({

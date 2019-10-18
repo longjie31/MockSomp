@@ -32,7 +32,8 @@
             ],
             "scripts": [
               "node_modules/moment/min/moment.min.js",
-              "src/config.ts"
+              "src/config.ts",
+              "node_modules/echarts/dist/echarts.min.js"
             ]
           },
           "configurations": {
