@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {NzDrawerRef, NzDrawerService} from 'ng-zorro-antd';
+import {UserAddComponent} from './user-add/user-add.component';
+import {UserEditComponent} from './user-edit/user-edit.component';
 
 @Component({
     selector: 'app-user',
@@ -6,6 +9,10 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+    // 增加抽屉
+    userAddDrawer: NzDrawerRef;
+    // 修改抽屉
+    userEditDrawer: NzDrawerRef;
     nodes = [
         {
             title: 'parent 1',
@@ -62,7 +69,7 @@ export class UserComponent implements OnInit {
         this.refreshStatus();
     }
 
-    constructor() {
+    constructor(private nzDrawerService: NzDrawerService) {
     }
 
     ngOnInit() {
@@ -74,6 +81,24 @@ export class UserComponent implements OnInit {
                 address: `London, Park Lane no. ${i}`
             });
         }
+    }
+
+    userAddShow() {
+        this.userAddDrawer = this.nzDrawerService.create({
+            nzTitle: '增加用户',
+            nzContent: UserAddComponent,
+            nzMaskClosable: false,
+            nzWidth: 520
+        });
+    }
+
+    userEditShow() {
+        this.userEditDrawer = this.nzDrawerService.create({
+            nzTitle: '修改用户',
+            nzContent: UserEditComponent,
+            nzMaskClosable: false,
+            nzWidth: 520
+        });
     }
 
 }

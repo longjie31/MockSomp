@@ -1,0 +1,118 @@
+.login-bg {
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/images/login_bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: Center;
+
+  span, i, input, button, /deep/ .ant-select-selection-selected-value {
+    font-family: SimHei;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0;
+    color: #f3f3f3;
+  }
+
+  .logo {
+    position: absolute;
+    top: 3%;
+    left: 4.5%;
+    width: 220px;
+    height: 56px;
+    background-image: url("/assets/images/zkwl_logo.png");
+  }
+  .formItem {
+    text-align: center;
+  }
+  form {
+    width: 860px;
+
+    .title {
+      font-size: 34px;
+      line-height: 82px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    nz-input-group {
+      width: 420px !important;
+    }
+  }
+
+  input, nz-select {
+    width: 420px;
+    height: 65px;
+    font-size: 20px;
+    padding-left: 100px !important;
+    border-radius: 10px;
+    background-color: transparent;
+    border: solid 2px #019497;
+    opacity: 0.8;
+
+    /deep/ .ant-select-selection {
+      margin-left: -10px;
+      border: none !important;
+      height: 65px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      background-color: transparent;
+
+      &:active, &:focus {
+        box-shadow: none !important;
+        border: none !important;
+      }
+    }
+  }
+
+  input:hover, input:focus, nz-select:hover, nz-select:focus {
+    border: solid 2px #0df2f6 !important;
+    opacity: 1;
+
+  }
+
+  input::placeholder, nz-select::placeholder {
+    color: #dadada;
+    opacity: 0.5;
+  }
+
+  i {
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  //登录错误
+  .error {
+    width: 860px;
+    float: left;
+    text-align: center;
+    i {
+      padding: 0 2px;
+      font-size: 16px;
+      color: #d81e06;
+    }
+  }
+
+  //注册链接
+  a {
+    color: #dadada;
+    font-size: 16px;
+    text-decoration: underline;
+  }
+
+  //登录按钮
+  button {
+    margin: 0 220px;
+    font-size: 24px;
+    width: 420px;
+    height: 65px;
+    border: none;
+    border-radius: 10px;
+    background-image: linear-gradient(90deg, #21b1ac 0%, #1bc6c3 49%, #0df2f6 100%),
+    linear-gradient(90deg, #3c51ee 0%, #208af6 50%, #08b8fc 100%);
+    background-blend-mode: normal, normal;
+  }
+}

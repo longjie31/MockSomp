@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthScopeService} from '../services/auth-scope.service';
+import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
     user = {username: '', password: ''};
 
     constructor(private router: Router,
-                private authScopeService: AuthScopeService) {
+                private authScopeService: AuthScopeService,
+                private http: HttpClient) {
     }
 
 
@@ -21,6 +23,11 @@ export class LoginComponent implements OnInit {
     }
 
     login(): void {
+        /*this.http.post('/admincenter/manage/sysmanage/policy/pwdPolicy.do?method=findPwdPolicyByPolicyname', {})
+            .subscribe(res => {
+                debugger;
+                console.log(res);
+            });*/
         if (this.user.username === 'admin' && this.user.password === 'admin') {
             this.authScopeService.setUid(this.user.username);
             // 此时用到moment就要用到声明全局变量

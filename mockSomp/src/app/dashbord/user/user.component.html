@@ -24,6 +24,7 @@
         </div>
         <div nz-col nzSpan="20">
             <nz-table
+                    nzBordered
                     [nzTitle]="'用户'"
                     #rowSelectionTable
                     nzShowSizeChanger
@@ -41,9 +42,13 @@
                             [nzIndeterminate]="isIndeterminate"
                             (nzCheckedChange)="checkAll($event)"
                     ></th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Address</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>住址</th>
+                    <th nzAlign="center" nzWidth="90px">
+                        <i nz-icon nzType="plus" nzTheme="outline" (click)="userAddShow()"
+                           [nzTwotoneColor]="'#52c41a'"></i>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -52,6 +57,11 @@
                     <td>{{ data.name }}</td>
                     <td>{{ data.age }}</td>
                     <td>{{ data.address }}</td>
+                    <td nzAlign="center">
+                        <i nz-icon nzType="edit" nzTheme="twotone" [nzTwotoneColor]="'#3686d1'" (click)="userEditShow()"></i>
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <i nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'#eb2f96'"></i>
+                    </td>
                 </tr>
                 </tbody>
             </nz-table>
