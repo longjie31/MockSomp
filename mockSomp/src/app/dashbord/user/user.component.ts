@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NzDrawerRef, NzDrawerService} from 'ng-zorro-antd';
 import {UserAddComponent} from './user-add/user-add.component';
 import {UserEditComponent} from './user-edit/user-edit.component';
+import {HttpService} from '../../@auth/services/http.service';
 
 @Component({
     selector: 'app-user',
@@ -69,7 +70,7 @@ export class UserComponent implements OnInit {
         this.refreshStatus();
     }
 
-    constructor(private nzDrawerService: NzDrawerService) {
+    constructor(private nzDrawerService: NzDrawerService,private httpService:HttpService) {
     }
 
     ngOnInit() {
@@ -81,6 +82,10 @@ export class UserComponent implements OnInit {
                 address: `London, Park Lane no. ${i}`
             });
         }
+        this.httpService.myPost(API.INIT_DEPT_TREE).subscribe(res=>{
+            debugger;
+            console.log(res);
+        });
     }
 
     userAddShow() {

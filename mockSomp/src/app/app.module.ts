@@ -5,11 +5,12 @@ import {AppRoutingModule} from './app-routing.module';
 import {NgZorroAntdModule, NZ_I18N, zh_CN} from 'ng-zorro-antd';
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import zh from '@angular/common/locales/zh';
 import {registerLocaleData} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AuthInterceptor} from './@auth/auth-interceptor';
 
 registerLocaleData(zh);
 
@@ -29,7 +30,8 @@ registerLocaleData(zh);
     bootstrap: [AppComponent],
     /** 配置 ng-zorro-antd 国际化（文案 及 日期） **/
     providers: [
-        {provide: NZ_I18N, useValue: zh_CN}
+        {provide: NZ_I18N, useValue: zh_CN},
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     ]
 })
 export class AppModule {
