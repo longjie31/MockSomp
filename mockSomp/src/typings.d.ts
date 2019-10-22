@@ -5,3 +5,5 @@ declare const _: any;
 declare const FMT: any;
 // http地址
 declare const API: any;
+// mock地址
+declare const MOCK: any;

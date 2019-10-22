@@ -1,20 +1,22 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {DashbordComponent} from './dashbord.component';
+import {ReportComponent} from './report.component';
+import {UserComponent} from './user/user.component';
+import {ResourceComponent} from './resource/resource.component';
 
 
 const routes: Routes = [
     {
         path: '',
-        component: DashbordComponent,
+        component: ReportComponent,
         children: [
             {
                 path: 'user',
-                loadChildren: () => import ('./user/user.module').then(mod => mod.UserModule)
+                component: UserComponent
             },
             {
-                path: 'report',
-                loadChildren: () => import('./report/report.module').then(mod => mod.ReportModule)
+                path: 'resource',
+                component: ResourceComponent
             }
         ]
     }
@@ -24,5 +26,5 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class DashbordRoutingModule {
+export class ReportRoutingModule {
 }

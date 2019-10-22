@@ -13,13 +13,14 @@ export class AuthService {
 
     logout() {
         this.authScopeService.clearSession();
-        this.router.navigateByUrl('/auth/login').then();
+        this.router.navigateByUrl('/auth/login')
+            .then();
     }
 
     // 是否需要加上token
     needAuthToken(url: string): boolean {
         // 比如登录，登出不用验证token
-        const array1 = [API.LOGIN];
+        const array1 = [(MOCK + API.LOGIN)];
         return !array1.includes(url);
     }
 
@@ -27,7 +28,9 @@ export class AuthService {
     refreshToken(token): string {
         try {
             const raw = JSON.parse(atob(token));
-            raw.delay = moment().add(30, 'minutes').format(FMT.NDT);
+            raw.delay = moment()
+                .add(30, 'minutes')
+                .format(FMT.NDT);
             const val = btoa(JSON.stringify(raw));
             this.authScopeService.setToken(val);
             return val;

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
     login(): void {
         if (this.user.username === 'admin' && this.user.password === 'admin') {
-            this.httpService.myPost(API.LOGIN)
+            this.httpService.myPost((MOCK + API.LOGIN))
                 .subscribe(res => {
                     if (res !== -1) {
                         this.authScopeService.setUid(this.user.username);
@@ -35,8 +35,7 @@ export class LoginComponent implements OnInit {
                             .add(30, 'minutes')
                             .format(FMT.NDT);
                         this.authScopeService.setToken(btoa(JSON.stringify({delay: delay})));
-                        this.router.navigate(['dashboard'])
-                            .then();
+                        this.router.navigate(['/dashboard/user']).then();
                     } else {
                         this.errorMsg = '登录失败';
                     }

@@ -3,7 +3,7 @@
         <div class="logo"></div>
         <ul nz-menu nzTheme="dark" nzMode="horizontal" class="menu">
             <li nz-menu-item nzSelected>工作台</li>
-            <li nz-menu-item routerLink="/admin">控制台</li>
+            <li nz-menu-item routerLink="/admin/pie">控制台</li>
             <li class="logout">
                 <a nzTitle="退出" nzPlacement="bottom" nz-tooltip (click)="logout()">
                     <i nz-icon type="logout" theme="outline"></i>
@@ -14,8 +14,11 @@
     <nz-layout>
         <nz-sider nzWidth="200px">
             <ul nz-menu [nzTheme]="'light'" [nzMode]="'vertical'" [nzSelectable]="true" style="height:100%">
-                <li nz-menu-item routerLink="/dashboard/user">
-                    <span title><i nz-icon nzType="smile" nzTheme="outline"></i>用户管理</span>
+                <li nz-menu-item routerLink="/dashboard/user" nzSelected>
+                    <span title><i nz-icon nzType="user" nzTheme="outline"></i>用户管理</span>
+                </li>
+                <li nz-menu-item routerLink="/dashboard/report/user">
+                    <span title><i nz-icon nzType="area-chart" nzTheme="outline"></i>报表管理</span>
                 </li>
             </ul>
         </nz-sider>

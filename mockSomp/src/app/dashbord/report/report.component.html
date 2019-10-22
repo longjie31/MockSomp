@@ -1,0 +1,6 @@
+<nz-tabset>
+    <nz-tab *ngFor="let menu of menus">
+        <a nz-tab-link [routerLink]="menu.router">{{menu.name}}</a>
+    </nz-tab>
+</nz-tabset>
+<router-outlet></router-outlet>

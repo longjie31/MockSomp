@@ -13,7 +13,6 @@ export class AuthInterceptor implements HttpInterceptor {
                 private asService: AuthScopeService,
                 private message: NzMessageService,
                 private router: Router) {
-
     }
 
     // http请求拦截，给请求头加上认证信息，并刷新token

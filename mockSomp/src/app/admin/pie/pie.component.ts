@@ -14,7 +14,7 @@ export class PieComponent implements OnInit {
         backgroundColor: '#2c343c',
 
         title: {
-            text: '南丁格尔饼图',
+            text: '南丁格尔图',
             left: 'center',
             top: 20,
             textStyle: {

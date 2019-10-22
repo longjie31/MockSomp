@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NzDrawerRef, NzDrawerService} from 'ng-zorro-antd';
+import {NzDrawerRef, NzDrawerService, NzFormatEmitEvent, NzTreeNode} from 'ng-zorro-antd';
 import {UserAddComponent} from './user-add/user-add.component';
 import {UserEditComponent} from './user-edit/user-edit.component';
 import {HttpService} from '../../@auth/services/http.service';
@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
     userAddDrawer: NzDrawerRef;
     // 修改抽屉
     userEditDrawer: NzDrawerRef;
+    // 树节点数据
     nodes = [
         {
             title: 'parent 1',
@@ -26,6 +27,8 @@ export class UserComponent implements OnInit {
             ]
         }
     ];
+    // 当前树节点
+    currentNode: NzTreeNode;
     listOfSelection = [
         {
             text: 'Select All Row',
@@ -61,8 +64,7 @@ export class UserComponent implements OnInit {
 
     refreshStatus(): void {
         this.isAllDisplayDataChecked = this.listOfDisplayData.every(item => this.mapOfCheckedId[item.id]);
-        this.isIndeterminate =
-            this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) && !this.isAllDisplayDataChecked;
+        this.isIndeterminate = this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) && !this.isAllDisplayDataChecked;
     }
 
     checkAll(value: boolean): void {
@@ -70,7 +72,8 @@ export class UserComponent implements OnInit {
         this.refreshStatus();
     }
 
-    constructor(private nzDrawerService: NzDrawerService,private httpService:HttpService) {
+    constructor(private nzDrawerService: NzDrawerService,
+                private httpService: HttpService) {
     }
 
     ngOnInit() {
@@ -82,10 +85,24 @@ export class UserComponent implements OnInit {
                 address: `London, Park Lane no. ${i}`
             });
         }
-        this.httpService.myPost(API.INIT_DEPT_TREE).subscribe(res=>{
-            debugger;
-            console.log(res);
-        });
+        this.treeInit();
+    }
+
+    // 得到树节点
+    treeInit() {
+        this.httpService.myPost((MOCK + API.INIT_DEPT_TREE))
+            .subscribe(res => {
+                    console.log(res);
+                    res['expanded'] = true;
+                    this.nodes.push(res);
+                }
+            );
+    }
+
+    // 树节点点击
+    treeClick(event: NzFormatEmitEvent) {
+        console.log(event);
+        this.currentNode = event['node'];
     }
 
     userAddShow() {
