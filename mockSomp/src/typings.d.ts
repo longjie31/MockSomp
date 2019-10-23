@@ -7,3 +7,5 @@ declare const FMT: any;
 declare const API: any;
 // mock地址
 declare const MOCK: any;
+// 图表
+declare const ECONF;

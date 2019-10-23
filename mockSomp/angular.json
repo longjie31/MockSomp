@@ -34,7 +34,9 @@
               "node_modules/moment/min/moment.min.js",
               "src/config.ts",
               "node_modules/echarts/dist/echarts.min.js",
-              "node_modules/lodash/lodash.min.js"
+              "node_modules/echarts/theme/macarons.js",
+              "node_modules/lodash/lodash.min.js",
+              "src/config.echarts.ts"
             ]
           },
           "configurations": {
