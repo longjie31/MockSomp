@@ -1,1 +1,19 @@
-<p>resource works!</p>
+<nz-content>
+    <div nz-row [nzGutter]="16" style="margin-bottom: 8px" [ngStyle]="{height:cHeight*0.5+'px'}">
+        <div nz-col nzSpan="6">
+            <div nz-card-grid style="width: 100%;">
+                <div id="res-chart0" [ngStyle]="{height:cHeight*0.5+'px'}"></div>
+            </div>
+        </div>
+        <div nz-col nzSpan="12">
+            <div nz-card-grid style="width: 100%;">
+                <div id="res-chart1" [ngStyle]="{height:cHeight*0.5+'px'}"></div>
+            </div>
+        </div>
+        <div nz-col nzSpan="6">
+            <div nz-card-grid style="width: 100%;">
+                <div id="res-chart2" [ngStyle]="{height:cHeight*0.5+'px'}"></div>
+            </div>
+        </div>
+    </div>
+</nz-content>

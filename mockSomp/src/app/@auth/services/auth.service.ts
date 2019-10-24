@@ -13,8 +13,7 @@ export class AuthService {
 
     logout() {
         this.authScopeService.clearSession();
-        this.router.navigateByUrl('/auth/login')
-            .then();
+        this.router.navigateByUrl('/auth/login').then();
     }
 
     // 是否需要加上token

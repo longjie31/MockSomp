@@ -12,5 +12,6 @@ window['API'] = {
     REPORT_USER_DEPARTMENT: '/report/user/department',
     REPORT_USER_LOGIN: '/report/user/login',
     REPORT_USER_LOGIN_OUT_TIME: '/report/user/login_out_time',
-    REPORT_USER_ACTIVE: '/report/user/active'
+    REPORT_USER_ACTIVE: '/report/user/active',
+    REPORT_RES_HOST: '/report/res/host'
 };
