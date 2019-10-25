@@ -1,0 +1,75 @@
+/deep/ .soms-plan {
+  height: 100%;
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid rgb(232, 232, 232);
+    padding: 10px 16px;
+    text-align: right;
+    left: 0;
+    background: #fff;
+  }
+
+  [nz-menu] {
+    border-right: none;
+  }
+
+  .menu-card {
+    border-right: 1px solid #e8e8e8;
+  }
+
+  .ant-card-body {
+    padding: 1px 0;
+    height: calc(100% - 56px);
+    overflow-y: auto;
+  }
+
+  table {
+    border: 0 !important;
+  }
+}
+
+/deep/ .ant-drawer {
+  .plan-edit-drawer .ant-drawer-body {
+    height: calc(100% - 108px);
+    padding-top: 12px;
+    overflow-y: auto;
+
+    nz-form-control {
+      width: 360px;
+    }
+
+    nz-form-item {
+      display: flex;
+      line-height: 32px;
+      margin-bottom: 12px;
+    }
+
+    input[type='number'] {
+      width: 80px;
+      margin: 0 8px;
+    }
+
+    .ant-checkbox-wrapper {
+      margin-left: 8px;
+    }
+  }
+
+  .plan-device-drawer .ant-drawer-body {
+    height: calc(100% - 108px);
+    padding-top: 0;
+    overflow-y: auto;
+  }
+
+  .plan-history-drawer .ant-drawer-body {
+    height: calc(100% - 55px);
+    overflow-y: auto;
+
+    .ant-timeline-item-last {
+      padding-bottom: 0;
+      margin-bottom: -24px;
+    }
+  }
+}
