@@ -1,0 +1,20 @@
+<form nz-form [formGroup]="addForm">
+    <nz-form-item>
+        <nz-form-label [nzRequired]="true" [nzFor]="'uid'">账号</nz-form-label>
+        <nz-form-control [nzErrorTip]="uidTpl" nzHasFeedback>
+            <input  autocomplete="off" nz-input formControlName="uid" id="uid" placeholder="账号由字母和数字组成"
+                    readonly onfocus="this.removeAttribute('readonly');" maxlength="21">
+        </nz-form-control>
+        <ng-template #uidTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+                必填项不能为空
+            </ng-container>
+            <ng-container *ngIf="control.hasError('pattern')">
+                账号由字母和数字组成
+            </ng-container>
+            <ng-container *ngIf="control.hasError('maxlength')">
+                账号长度最大20位
+            </ng-container>
+        </ng-template>
+    </nz-form-item>
+</form>

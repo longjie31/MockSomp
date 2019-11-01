@@ -14,9 +14,8 @@
     <nz-layout>
         <nz-sider nzWidth="200px">
             <ul nz-menu [nzTheme]="'light'" [nzMode]="'vertical'" [nzSelectable]="true" style="height:100%">
-                <li nz-menu-item routerLink="/admin/pie">
+                <li nz-menu-item routerLink="/admin/pie" [nzMatchRouter]="true">
                     <span title><i nz-icon nzType="pie-chart" nzTheme="outline"></i>饼图</span>
-
                 </li>
             </ul>
         </nz-sider>

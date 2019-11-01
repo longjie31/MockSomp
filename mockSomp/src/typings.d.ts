@@ -9,3 +9,6 @@ declare const API: any;
 declare const MOCK: any;
 // 图表
 declare const ECONF;
+// 验证
+declare const REG: any;
+

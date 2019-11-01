@@ -17,3 +17,6 @@ window['API'] = {
     PLAN_LEFT_MENU: '/plan/leftMenu',
     PLAN_LIST: '/plan/list'
 };
+window['REG'] = {
+    LN: new RegExp(/^[0-9a-zA-Z]+$/), // Letters or numbers，字母或数字
+};
