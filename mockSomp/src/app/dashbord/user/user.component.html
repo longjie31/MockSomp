@@ -3,19 +3,22 @@
         <div nz-col nzSpan="4">
             <nz-divider nzText="组织机构"></nz-divider>
             <nz-button-group style="padding: 0 5px;">
-            <button nz-button nzType="primary" class="Orgbtn"><i nz-icon nzType="plus" nzTheme="outline"></i></button>
-            <button nz-button nzType="default" class="Orgbtn"><i nz-icon nzType="edit" nzTheme="outline"></i></button>
-            <button nz-button nzType="danger" class="Orgbtn"><i nz-icon nzType="delete" nzTheme="outline"></i></button>
+                <button nz-button nzType="primary" class="Orgbtn"><i nz-icon nzType="plus" nzTheme="outline"></i>
+                </button>
+                <button nz-button nzType="default" class="Orgbtn"><i nz-icon nzType="edit" nzTheme="outline"></i>
+                </button>
+                <button nz-button nzType="danger" class="Orgbtn"><i nz-icon nzType="delete" nzTheme="outline"></i>
+                </button>
             </nz-button-group>
-           <!-- <nz-tree [nzData]="nodes" nzShowIcon [nzExpandedIcon]="mutiExpandedIconTpl">
-            </nz-tree>
-            <ng-template #mutiExpandedIconTpl let-node>
-                <i *ngIf="!node.origin.isLeaf"
-                   nz-icon
-                   [nzType]="node.isExpanded ? 'folder-open' : 'folder'"
-                   class="ant-tree-switcher-line-icon"></i>
-                <i *ngIf="node.origin.isLeaf" nz-icon nzType="file" class="ant-tree-switcher-line-icon"></i>
-            </ng-template>-->
+            <!-- <nz-tree [nzData]="nodes" nzShowIcon [nzExpandedIcon]="mutiExpandedIconTpl">
+             </nz-tree>
+             <ng-template #mutiExpandedIconTpl let-node>
+                 <i *ngIf="!node.origin.isLeaf"
+                    nz-icon
+                    [nzType]="node.isExpanded ? 'folder-open' : 'folder'"
+                    class="ant-tree-switcher-line-icon"></i>
+                 <i *ngIf="node.origin.isLeaf" nz-icon nzType="file" class="ant-tree-switcher-line-icon"></i>
+             </ng-template>-->
             <nz-tree [nzData]="nodes" nzShowLine (nzClick)="treeClick($event)">
             </nz-tree>
         </div>
@@ -55,7 +58,8 @@
                     <td>{{ data.age }}</td>
                     <td>{{ data.address }}</td>
                     <td nzAlign="center">
-                        <i nz-icon nzType="edit" nzTheme="twotone" [nzTwotoneColor]="'#3686d1'" (click)="userEditShow()"></i>
+                        <i nz-icon nzType="edit" nzTheme="twotone" [nzTwotoneColor]="'#3686d1'"
+                           (click)="userEditShow()"></i>
                         <nz-divider nzType="vertical"></nz-divider>
                         <i nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'#eb2f96'"></i>
                     </td>

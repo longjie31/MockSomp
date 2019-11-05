@@ -15,7 +15,9 @@ window['API'] = {
     REPORT_USER_ACTIVE: '/report/user/active',
     REPORT_RES_HOST: '/report/res/host',
     PLAN_LEFT_MENU: '/plan/leftMenu',
-    PLAN_LIST: '/plan/list'
+    PLAN_LIST: '/plan/list',
+    MONITOR_LIST: '/monitor/list',
+    MONITOR_MORE_INFO: '/monitor/moreInfo'
 };
 window['REG'] = {
     LN: new RegExp(/^[0-9a-zA-Z]+$/), // Letters or numbers，字母或数字

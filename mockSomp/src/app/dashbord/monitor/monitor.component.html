@@ -1,0 +1,55 @@
+<nz-content>
+    <div nz-row>
+        <div nz-col nzSpan="6">
+            <nz-card nzTitle="主机列表">
+                <nz-list [nzDataSource]="hostData" [nzRenderItem]="item" [nzLoading]="listLoading">
+                    <ng-template #item let-item>
+                        <nz-list-item [nzActions]="[itemRight]">
+                            {{item.deviceName}}<span style="color: darkorange">({{item.ips}}})</span>
+                        </nz-list-item>
+                    </ng-template>
+                </nz-list>
+                <ng-template #itemRight>
+                    <i nz-icon nzType="dashboard" nzTheme="outline"></i>
+                </ng-template>
+            </nz-card>
+        </div>
+        <div nz-col nzSpan="18">
+            <nz-card [nzHoverable]="true">
+                <div nz-card-grid [ngStyle]="gridStyle">
+                    <p style="margin-top: 1em">主机名称:<span style="color: #0df2f6">{{currentMoreInfo.deviceName}}</span></p>
+                </div>
+                <div nz-card-grid [ngStyle]="gridStyle">
+                    <p style="margin-top: 1em">操作系统:<span style="color: darkorange">{{currentMoreInfo.deviceOs}}</span></p>
+                </div>
+                <div nz-card-grid [ngStyle]="gridStyle">
+                    <p style="margin-top: 1em">系统版本:<span style="color: aqua">{{currentMoreInfo.deviceVersion}}</span></p>
+                </div>
+                <div nz-card-grid [ngStyle]="gridStyle">
+                    <p style="margin-top: 1em">CPU架构:<span style="color: blueviolet">{{currentMoreInfo.deviceArch}}</span>
+                    </p>
+                </div>
+                <div nz-card-grid [ngStyle]="gridStyle">
+                    <p style="margin-top: 1em">1分钟负载:<span style="color: coral">{{currentMoreInfo.deviceLoadavg1}}</span>
+                    </p>
+                </div>
+                <div nz-card-grid [ngStyle]="gridStyle">
+                    <p style="margin-top: 1em">5分钟负载:<span
+                            style="color: aquamarine">{{currentMoreInfo.deviceLoadavg5}}</span></p>
+                </div>
+                <div nz-card-grid [ngStyle]="gridStyle">
+                    <p style="margin-top: 1em">15分钟负载:<span
+                            style="color: greenyellow">{{currentMoreInfo.deviceLoadavg15}}</span></p>
+                </div>
+            </nz-card>
+            <nz-card [nzHoverable]="true">
+                <div nz-card-grid [ngStyle]="gridStyle1">
+                </div>
+                <div nz-card-grid [ngStyle]="gridStyle1">
+                </div>
+                <div nz-card-grid [ngStyle]="gridStyle1">
+                </div>
+            </nz-card>
+        </div>
+    </div>
+</nz-content>

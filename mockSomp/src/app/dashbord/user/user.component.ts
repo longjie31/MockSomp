@@ -90,13 +90,12 @@ export class UserComponent implements OnInit {
 
     // 得到树节点
     treeInit() {
-        this.httpService.myPost((MOCK + API.INIT_DEPT_TREE))
-            .subscribe(res => {
-                    console.log(res);
-                    res['expanded'] = true;
-                    this.nodes.push(res);
-                }
-            );
+        this.httpService.myPost((MOCK + API.INIT_DEPT_TREE)).subscribe(res => {
+                console.log(res);
+                res['expanded'] = true;
+                this.nodes.push(res);
+            }
+        );
     }
 
     // 树节点点击
