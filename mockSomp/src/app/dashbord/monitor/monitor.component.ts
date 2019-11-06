@@ -4,7 +4,7 @@ import {HttpService} from '../../@auth/services/http.service';
 @Component({
     selector: 'app-monitor',
     templateUrl: './monitor.component.html',
-    styleUrls: ['./monitor.component.css']
+    styleUrls: ['./monitor.component.less']
 })
 export class MonitorComponent implements OnInit {
     hostData = [];
@@ -21,6 +21,8 @@ export class MonitorComponent implements OnInit {
     };
     currentHost = {};
     currentMoreInfo = {};
+    diskArray = [];
+    ethArray = [];
 
     constructor(private httpService: HttpService) {
     }
@@ -49,6 +51,12 @@ export class MonitorComponent implements OnInit {
             console.log(res);
             if (res !== -1) {
                 this.currentMoreInfo = res[0];
+                this.diskArray = this.currentMoreInfo['disk'];
+                this.ethArray = this.currentMoreInfo['listEth'];
+                this.diskArray.forEach(val => {
+                    val.percent = ((parseFloat(_.trimEnd(val.deviceDiskAll, 'GB')) - parseFloat(_.trimEnd(val.deviceDiskFree, 'GB')))
+                        / parseFloat(_.trimEnd(val.deviceDiskAll, 'GB')) * 100).toFixed(0);
+                });
             }
         });
     }

@@ -1,11 +1,12 @@
-<nz-content>
-    <div nz-row>
+<nz-content style="background: #ECECEC;padding:30px;">
+    <div nz-row nzGutter="8">
         <div nz-col nzSpan="6">
             <nz-card nzTitle="主机列表">
                 <nz-list [nzDataSource]="hostData" [nzRenderItem]="item" [nzLoading]="listLoading">
                     <ng-template #item let-item>
-                        <nz-list-item [nzActions]="[itemRight]">
-                            {{item.deviceName}}<span style="color: darkorange">({{item.ips}}})</span>
+                        <nz-list-item [nzActions]="[itemRight]"
+                                      [ngClass]="currentHost.deviceName===item.deviceName?'clicked':''" style="cursor: pointer">
+                            {{item.deviceName}}<span style="color: darkorange" (click)="currentHost=item">({{item.ips}}})</span>
                         </nz-list-item>
                     </ng-template>
                 </nz-list>
@@ -14,42 +15,118 @@
                 </ng-template>
             </nz-card>
         </div>
-        <div nz-col nzSpan="18">
-            <nz-card [nzHoverable]="true">
-                <div nz-card-grid [ngStyle]="gridStyle">
-                    <p style="margin-top: 1em">主机名称:<span style="color: #0df2f6">{{currentMoreInfo.deviceName}}</span></p>
+        <div nz-col nzSpan="18" style="background: #ECECEC;">
+            <div>
+                <nz-card [nzHoverable]="true" id="rightTop">
+                    <div nz-card-grid [ngStyle]="gridStyle">
+                        <p style="margin-top: 1em">主机名称: <span
+                                style="color: #0df2f6">{{currentMoreInfo.deviceName}}</span></p>
+                    </div>
+                    <div nz-card-grid [ngStyle]="gridStyle">
+                        <p style="margin-top: 1em">操作系统: <span
+                                style="color: darkorange">{{currentMoreInfo.deviceOs}}</span></p>
+                    </div>
+                    <div nz-card-grid [ngStyle]="gridStyle">
+                        <p style="margin-top: 1em">系统版本: <span
+                                style="color: aqua">{{currentMoreInfo.deviceVersion}}</span></p>
+                    </div>
+                    <div nz-card-grid [ngStyle]="gridStyle">
+                        <p style="margin-top: 1em">CPU架构: <span
+                                style="color: blueviolet">{{currentMoreInfo.deviceArch}}</span>
+                        </p>
+                    </div>
+                    <div nz-card-grid [ngStyle]="gridStyle1">
+                        <p style="margin-top: 1em">1分钟负载: <span
+                                style="color: coral">{{currentMoreInfo.deviceLoadavg1}}</span>
+                        </p>
+                    </div>
+                    <div nz-card-grid [ngStyle]="gridStyle1">
+                        <p style="margin-top: 1em">5分钟负载: <span
+                                style="color: aquamarine">{{currentMoreInfo.deviceLoadavg5}}</span></p>
+                    </div>
+                    <div nz-card-grid [ngStyle]="gridStyle1">
+                        <p style="margin-top: 1em">15分钟负载: <span
+                                style="color: greenyellow">{{currentMoreInfo.deviceLoadavg15}}</span></p>
+                    </div>
+                </nz-card>
+            </div>
+            <div>
+                <div nz-row [nzGutter]="8" style="background: #ECECEC;" id="rightMiddle">
+                    <div nz-col [nzSpan]="8">
+                        <nz-card [nzTitle]="currentMoreInfo?.cpu?.deviceCpuModle">
+                            <p style="width: 50%;display: inline-block;">CPU数量:
+                                {{currentMoreInfo?.cpu?.deviceCpuNum}}</p>
+                            <p style="width: 50%;display: inline-block;">CPU核数:
+                                {{currentMoreInfo?.cpu?.deviceCpuCorenum}}</p>
+                        </nz-card>
+                    </div>
+                    <div nz-col [nzSpan]="8">
+                        <nz-card [nzTitle]="'内存:'+currentMoreInfo?.mem?.deviceMemAll+'MB'" class="kongxian">
+                            <p style="margin: 0">空闲：2500MB</p>
+                            <p style="margin: 0">
+                                <nz-progress [nzPercent]="62.5"
+                                             [nzStrokeColor]="{ '0%': '#ffe59e', '100%': '#8cfac7' }"
+                                             nzTitle="空闲:  2500MB" nz-tooltip nzStatus="active">
+                                </nz-progress>
+                            </p>
+                        </nz-card>
+                    </div>
+                    <div nz-col [nzSpan]="8">
+                        <nz-card [nzTitle]="'交换分区:  1024MB'" class="kongxian">
+                            <p style="margin: 0">空闲: 916MB</p>
+                            <p style="margin: 0">
+                                <nz-progress [nzPercent]="89.4"
+                                             [nzStrokeColor]="{ '0%': '#ffe59e', '100%': '#8cfac7' }"
+                                             nzTitle="空闲:  216MB" nz-tooltip nzStatus="active">
+                                </nz-progress>
+                            </p>
+                        </nz-card>
+                    </div>
                 </div>
-                <div nz-card-grid [ngStyle]="gridStyle">
-                    <p style="margin-top: 1em">操作系统:<span style="color: darkorange">{{currentMoreInfo.deviceOs}}</span></p>
+            </div>
+            <div>
+                <div nz-row [nzGutter]="16">
+                    <div nz-col [nzSpan]="12">
+                        <nz-card>
+                            <nz-tabset>
+                                <ng-container *ngFor="let item of diskArray">
+                                    <nz-tab [nzTitle]="item.deviceDiskName">
+                                        <p style="margin: 0;width: 50%;display: inline-block;">
+                                            磁盘容量:{{item.deviceDiskAll}}</p>
+                                        <p style="margin: 0;width: 50%;display: inline-block;">
+                                            空闲容量:{{item.deviceDiskFree}}</p>
+                                        <p style="margin: 0">
+                                            <nz-progress [nzPercent]="item.percent"
+                                                         [nzStrokeColor]="{ '0%': '#ff5722', '100%': '#8cfac7' }"
+                                                         [nzTitle]="'已用磁盘用量：'+item.deviceDiskUsed" nz-tooltip
+                                                         nzStatus="active">
+                                            </nz-progress>
+                                        </p>
+                                    </nz-tab>
+                                </ng-container>
+                            </nz-tabset>
+                        </nz-card>
+                    </div>
+                    <div nz-col [nzSpan]="12">
+                        <nz-card>
+                            <nz-tabset>
+                                <ng-container *ngFor="let ethItem of ethArray">
+                                    <nz-tab [nzTitle]="ethItem.deviceEthName">
+                                        <p style="margin: 0;width: 50%;display: inline-block;">
+                                            IP地址:{{ethItem.deviceEthIps}}</p>
+                                        <p style="margin: 0;width: 50%;display: inline-block;text-align: right;color: #f06b37">
+                                            已接入网线</p>
+                                        <p style="margin: 0;width: 50%;display: inline-block;">
+                                            MAC地址:{{ethItem.deviceEthMac}}</p>
+                                        <p style="margin: 0;width: 50%;display: inline-block;text-align: right;color: #f06b37">
+                                            网络可用</p>
+                                    </nz-tab>
+                                </ng-container>
+                            </nz-tabset>
+                        </nz-card>
+                    </div>
                 </div>
-                <div nz-card-grid [ngStyle]="gridStyle">
-                    <p style="margin-top: 1em">系统版本:<span style="color: aqua">{{currentMoreInfo.deviceVersion}}</span></p>
-                </div>
-                <div nz-card-grid [ngStyle]="gridStyle">
-                    <p style="margin-top: 1em">CPU架构:<span style="color: blueviolet">{{currentMoreInfo.deviceArch}}</span>
-                    </p>
-                </div>
-                <div nz-card-grid [ngStyle]="gridStyle">
-                    <p style="margin-top: 1em">1分钟负载:<span style="color: coral">{{currentMoreInfo.deviceLoadavg1}}</span>
-                    </p>
-                </div>
-                <div nz-card-grid [ngStyle]="gridStyle">
-                    <p style="margin-top: 1em">5分钟负载:<span
-                            style="color: aquamarine">{{currentMoreInfo.deviceLoadavg5}}</span></p>
-                </div>
-                <div nz-card-grid [ngStyle]="gridStyle">
-                    <p style="margin-top: 1em">15分钟负载:<span
-                            style="color: greenyellow">{{currentMoreInfo.deviceLoadavg15}}</span></p>
-                </div>
-            </nz-card>
-            <nz-card [nzHoverable]="true">
-                <div nz-card-grid [ngStyle]="gridStyle1">
-                </div>
-                <div nz-card-grid [ngStyle]="gridStyle1">
-                </div>
-                <div nz-card-grid [ngStyle]="gridStyle1">
-                </div>
-            </nz-card>
+            </div>
         </div>
     </div>
 </nz-content>
