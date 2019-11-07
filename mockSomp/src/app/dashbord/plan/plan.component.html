@@ -10,7 +10,7 @@
     </div>
     <div nz-col nzSpan="20">
         <nz-card [nzBordered]="false" [nzTitle]="'计划列表'">
-            <nz-table nzBordered [nzSize]="'middle'" #planTab [nzData]="plans" [nzLoading]="loading">
+            <nz-table nzBordered #planTab [nzData]="plans" [nzSize]="'middle'" [nzLoading]="loading">
                 <thead>
                 <tr>
                     <th>计划名称</th>
@@ -55,6 +55,50 @@
                     </td>
                 </tr>
                 </tbody>
+                <!--<thead>
+                <tr>
+                    <th>计划名称</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                    <th>下一次执行时间</th>
+                    <th nzWidth="90px" nzAlign="center">状态</th>
+                    <th nzWidth="50px" nzAlign="center">历史</th>
+                    <th nzWidth="90px" nzAlign="center">
+                        <a nzTitle="增加" nzPlacement="top" nz-tooltip>
+                            <i nz-icon type="plus" theme="outline" (click)="create()"></i>
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let plan of planTab.data">
+                    <td>{{plan['jobName']}}</td>
+                    <td>{{plan['startTime'] | date:"yyyy-MM-dd HH:mm"}}</td>
+                    <td>{{plan['endTime'] | date:"yyyy-MM-dd HH:mm"}}</td>
+                    <td>{{plan['nextFireTime'] | date:"yyyy-MM-dd HH:mm"}}</td>
+                    <td nzAlign="center">
+                        <nz-switch *ngIf="plan['jobStatus']!='NONE'" [ngModel]="plan['jobStatus']=='NORMAL'"
+                                   nzCheckedChildren="运行" nzUnCheckedChildren="暂停"
+                                   (ngModelChange)="switch($event,plan)"></nz-switch>
+                        <span *ngIf="plan['jobStatus']=='NONE'">已结束</span>
+                    </td>
+                    <td nzAlign="center">
+                        <a nzTitle="查看" nzPlacement="top" nz-tooltip>
+                            <i nz-icon type="eye" theme="outline" (click)="retrieveRst(plan['jobId'])"></i>
+                        </a>
+                    </td>
+                    <td nzAlign="center">
+                        <a nzTitle="修改" nzPlacement="top" nz-tooltip>
+                            <i nz-icon type="edit" theme="outline" (click)="update(plan)"></i>
+                        </a>
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <a nzTitle="删除" nzPlacement="top" nz-tooltip>
+                            <i nz-icon type="delete" theme="outline" nz-popconfirm nzTitle="确定删除该计划？"
+                               (nzOnConfirm)="delete(plan)" nzPlacement="left"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>-->
             </nz-table>
         </nz-card>
     </div>

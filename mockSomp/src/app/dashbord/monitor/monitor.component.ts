@@ -23,6 +23,12 @@ export class MonitorComponent implements OnInit {
     currentMoreInfo = {};
     diskArray = [];
     ethArray = [];
+    // 表格
+    infoArray = [];
+    tabLoading = false;
+    total = 0;
+    page = 1;
+    limit = 4;
 
     constructor(private httpService: HttpService) {
     }
@@ -36,7 +42,6 @@ export class MonitorComponent implements OnInit {
         this.listLoading = true;
         this.httpService.myPost((MOCK + API.MONITOR_LIST)).subscribe(res => {
             this.listLoading = false;
-            console.log(res);
             if (res !== -1) {
                 this.hostData = res;
                 this.currentHost = this.hostData[0];
@@ -47,8 +52,9 @@ export class MonitorComponent implements OnInit {
 
     // 查询详细信息
     searchMoreInfo(deviceFlag) {
+        this.tabLoading = true;
         this.httpService.myPost((MOCK + API.MONITOR_MORE_INFO), {deviceFlag}).subscribe(res => {
-            console.log(res);
+            this.tabLoading = false;
             if (res !== -1) {
                 this.currentMoreInfo = res[0];
                 this.diskArray = this.currentMoreInfo['disk'];
@@ -57,6 +63,8 @@ export class MonitorComponent implements OnInit {
                     val.percent = ((parseFloat(_.trimEnd(val.deviceDiskAll, 'GB')) - parseFloat(_.trimEnd(val.deviceDiskFree, 'GB')))
                         / parseFloat(_.trimEnd(val.deviceDiskAll, 'GB')) * 100).toFixed(0);
                 });
+                this.infoArray = this.currentMoreInfo['listApp'];
+                this.total = this.infoArray.length;
             }
         });
     }

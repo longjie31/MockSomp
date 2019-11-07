@@ -1,11 +1,12 @@
 <nz-content style="background: #ECECEC;padding:30px;">
-    <div nz-row nzGutter="8">
+    <div nz-row nzGutter="8" id="div">
         <div nz-col nzSpan="6">
             <nz-card nzTitle="主机列表">
                 <nz-list [nzDataSource]="hostData" [nzRenderItem]="item" [nzLoading]="listLoading">
                     <ng-template #item let-item>
-                        <nz-list-item [nzActions]="[itemRight]"
-                                      [ngClass]="currentHost.deviceName===item.deviceName?'clicked':''" style="cursor: pointer">
+                        <nz-list-item [nzActions]="[itemRight]" (click)="searchMoreInfo(item.deviceFlag)"
+                                      [ngClass]="(currentHost.deviceName===item.deviceName&&currentHost.diskstatus===item.diskstatus)?'clicked':''"
+                                      style="cursor: pointer">
                             {{item.deviceName}}<span style="color: darkorange" (click)="currentHost=item">({{item.ips}}})</span>
                         </nz-list-item>
                     </ng-template>
@@ -19,33 +20,33 @@
             <div>
                 <nz-card [nzHoverable]="true" id="rightTop">
                     <div nz-card-grid [ngStyle]="gridStyle">
-                        <p style="margin-top: 1em">主机名称: <span
+                        <p>主机名称: <span
                                 style="color: #0df2f6">{{currentMoreInfo.deviceName}}</span></p>
                     </div>
                     <div nz-card-grid [ngStyle]="gridStyle">
-                        <p style="margin-top: 1em">操作系统: <span
+                        <p>操作系统: <span
                                 style="color: darkorange">{{currentMoreInfo.deviceOs}}</span></p>
                     </div>
                     <div nz-card-grid [ngStyle]="gridStyle">
-                        <p style="margin-top: 1em">系统版本: <span
+                        <p>系统版本: <span
                                 style="color: aqua">{{currentMoreInfo.deviceVersion}}</span></p>
                     </div>
                     <div nz-card-grid [ngStyle]="gridStyle">
-                        <p style="margin-top: 1em">CPU架构: <span
+                        <p>CPU架构: <span
                                 style="color: blueviolet">{{currentMoreInfo.deviceArch}}</span>
                         </p>
                     </div>
                     <div nz-card-grid [ngStyle]="gridStyle1">
-                        <p style="margin-top: 1em">1分钟负载: <span
+                        <p>1分钟负载: <span
                                 style="color: coral">{{currentMoreInfo.deviceLoadavg1}}</span>
                         </p>
                     </div>
                     <div nz-card-grid [ngStyle]="gridStyle1">
-                        <p style="margin-top: 1em">5分钟负载: <span
+                        <p>5分钟负载: <span
                                 style="color: aquamarine">{{currentMoreInfo.deviceLoadavg5}}</span></p>
                     </div>
                     <div nz-card-grid [ngStyle]="gridStyle1">
-                        <p style="margin-top: 1em">15分钟负载: <span
+                        <p>15分钟负载: <span
                                 style="color: greenyellow">{{currentMoreInfo.deviceLoadavg15}}</span></p>
                     </div>
                 </nz-card>
@@ -54,9 +55,9 @@
                 <div nz-row [nzGutter]="8" style="background: #ECECEC;" id="rightMiddle">
                     <div nz-col [nzSpan]="8">
                         <nz-card [nzTitle]="currentMoreInfo?.cpu?.deviceCpuModle">
-                            <p style="width: 50%;display: inline-block;">CPU数量:
+                            <p style="width: 50%;display: inline-block;margin-top: 1em;">CPU数量:
                                 {{currentMoreInfo?.cpu?.deviceCpuNum}}</p>
-                            <p style="width: 50%;display: inline-block;">CPU核数:
+                            <p style="width: 50%;display: inline-block;margin-top: 1em;">CPU核数:
                                 {{currentMoreInfo?.cpu?.deviceCpuCorenum}}</p>
                         </nz-card>
                     </div>
@@ -126,6 +127,45 @@
                         </nz-card>
                     </div>
                 </div>
+                <div>
+                    <nz-card>
+                        <nz-table nzBordered #infoTab [nzData]="infoArray" [nzLoading]="tabLoading"
+                                  [nzTotal]="total" [(nzPageIndex)]="page"
+                                  [(nzPageSize)]="limit">
+                            <thead>
+                            <tr>
+                                <th>应用名称</th>
+                                <th>服务名称</th>
+                                <th>运行状态</th>
+                                <th>进程号</th>
+                                <th>线程数量</th>
+                                <th>内存占用</th>
+                                <th>启停时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let data of infoTab.data">
+                                <td>{{data.deviceAppName}}</td>
+                                <td>{{data.deviceAppServiceName}}</td>
+                                <td>{{data.deviceAppStatus}}</td>
+                                <td>{{data.deviceAppPid}}</td>
+                                <td>{{data.deviceAppTasks}}</td>
+                                <td>{{data.deviceAppPmem}}</td>
+                                <td>{{data.deviceAppStarttime}}</td>
+                            </tr>
+                            </tbody>
+                        </nz-table>
+                    </nz-card>
+                </div>
+                <!--<nb-card status="success">
+                    <nb-card-header>Nebula</nb-card-header>
+                    <nb-card-body>
+                        A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
+                        Originally, nebula was a name for any diffuse astronomical object,
+                        including galaxies beyond the Milky Way.
+                    </nb-card-body>
+                    <nb-card-footer>By Wikipedia</nb-card-footer>
+                </nb-card>-->
             </div>
         </div>
     </div>
