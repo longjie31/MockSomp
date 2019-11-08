@@ -4,7 +4,6 @@ import {CommonModule} from '@angular/common';
 import {MonitorRoutingModule} from './monitor-routing.module';
 import {MonitorComponent} from './monitor.component';
 import {NgZorroAntdModule} from 'ng-zorro-antd';
-import {NbCardModule, NbThemeModule} from '@nebular/theme';
 
 
 @NgModule({
@@ -12,9 +11,7 @@ import {NbCardModule, NbThemeModule} from '@nebular/theme';
     imports: [
         CommonModule,
         MonitorRoutingModule,
-        NgZorroAntdModule,
-        NbCardModule,
-        NbThemeModule
+        NgZorroAntdModule
     ]
 })
 export class MonitorModule {

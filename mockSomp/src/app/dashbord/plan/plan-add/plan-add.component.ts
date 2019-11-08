@@ -8,17 +8,25 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class PlanAddComponent implements OnInit {
     addForm: FormGroup;
+    startTime: any;
+    endTime: any;
 
     constructor(private formBuilder: FormBuilder) {
     }
 
     ngOnInit() {
         this.createForm();
+        debugger;
+        this.startTime = moment().format(FMT.NDT);
+        this.endTime = moment().add(1, 'y').format(FMT.NDT);
+        console.log(this.startTime);
+        console.log(this.endTime);
     }
 
     createForm() {
         this.addForm = this.formBuilder.group({
-            uid: [null, [Validators.required, Validators.pattern(REG.LN), Validators.maxLength(20)]]
+            name: [null, [Validators.required, Validators.pattern(REG.LN), Validators.maxLength(20)]],
+            time: [this.startTime, this.endTime]
         });
     }
 }

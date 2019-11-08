@@ -28,7 +28,6 @@
               }
             ],
             "styles": [
-              "src/default.css",
               "src/styles.css"
             ],
             "scripts": [

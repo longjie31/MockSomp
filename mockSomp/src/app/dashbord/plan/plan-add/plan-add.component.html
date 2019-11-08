@@ -1,9 +1,9 @@
 <form nz-form [formGroup]="addForm">
     <nz-form-item>
-        <nz-form-label [nzRequired]="true" [nzFor]="'uid'">账号</nz-form-label>
-        <nz-form-control [nzErrorTip]="uidTpl" nzHasFeedback>
-            <input  autocomplete="off" nz-input formControlName="uid" id="uid" placeholder="账号由字母和数字组成"
-                    readonly onfocus="this.removeAttribute('readonly');" maxlength="21">
+        <nz-form-label [nzRequired]="true" [nzFor]="'name'" nzMd="4">计划名称</nz-form-label>
+        <nz-form-control [nzErrorTip]="uidTpl" nzHasFeedback nzMd="20">
+            <input autocomplete="off" nz-input formControlName="name" id="name"
+                   readonly onfocus="this.removeAttribute('readonly');" maxlength="21">
         </nz-form-control>
         <ng-template #uidTpl let-control>
             <ng-container *ngIf="control.hasError('required')">
@@ -16,5 +16,15 @@
                 账号长度最大20位
             </ng-container>
         </ng-template>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzRequired]="true" [nzFor]="'uid'" nzMd="4">计划时间</nz-form-label>
+        <nz-form-control [nzErrorTip]="uidTpl" nzHasFeedback nzMd="20">
+            <nz-range-picker [nzShowTime]="{nzFormat:'HH:mm'}"
+            nzFormat="yyyy-MM-dd HH:mm"
+            [nzPlaceHolder]="['计划开始时间','计划结束时间']" formControlName="time">
+
+            </nz-range-picker>
+        </nz-form-control>
     </nz-form-item>
 </form>

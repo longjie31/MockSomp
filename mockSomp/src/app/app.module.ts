@@ -11,7 +11,6 @@ import zh from '@angular/common/locales/zh';
 import {registerLocaleData} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthInterceptor} from './@auth/auth-interceptor';
-import {NbCardModule, NbThemeModule} from '@nebular/theme';
 
 registerLocaleData(zh);
 
@@ -26,9 +25,7 @@ registerLocaleData(zh);
         FormsModule,
         HttpClientModule,
         NgZorroAntdModule,
-        AppRoutingModule,
-        NbThemeModule.forRoot(),
-        NbCardModule
+        AppRoutingModule
     ],
     bootstrap: [AppComponent],
     /** 配置 ng-zorro-antd 国际化（文案 及 日期） **/

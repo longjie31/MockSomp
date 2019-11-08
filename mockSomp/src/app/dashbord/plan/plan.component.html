@@ -17,11 +17,11 @@
                     <th>开始时间</th>
                     <th>结束时间</th>
                     <th>下一次执行时间</th>
-                    <th nzWidth="90px" nzAlign="center">状态</th>
-                    <th nzWidth="50px" nzAlign="center">历史</th>
+                    <th nzAlign="center">状态</th>
+                    <th nzAlign="center">历史</th>
                     <th nzWidth="90px" nzAlign="center">
-                        <a nzTitle="增加" nzPlacement="top" nz-tooltip>
-                            <i nz-icon type="plus" theme="outline" (click)="create()"></i>
+                        <a nzTitle="增加" nzPlacement="top" nz-tooltip (click)="create()">
+                            <i nz-icon nzType="plus" nzTheme="outline"></i>
                         </a>
                     </th>
                 </tr>
@@ -40,16 +40,16 @@
                     </td>
                     <td nzAlign="center">
                         <a nzTitle="查看" nzPlacement="top" nz-tooltip>
-                            <i nz-icon type="eye" theme="outline" (click)="retrieveRst(plan['jobId'])"></i>
+                            <i nz-icon nzType="eye" theme="outline" (click)="retrieveRst(plan['jobId'])"></i>
                         </a>
                     </td>
                     <td nzAlign="center">
                         <a nzTitle="修改" nzPlacement="top" nz-tooltip>
-                            <i nz-icon type="edit" theme="outline" (click)="update(plan)"></i>
+                            <i nz-icon nzType="edit" theme="outline" (click)="update(plan)"></i>
                         </a>
                         <nz-divider nzType="vertical"></nz-divider>
                         <a nzTitle="删除" nzPlacement="top" nz-tooltip>
-                            <i nz-icon type="delete" theme="outline" nz-popconfirm nzTitle="确定删除该计划？"
+                            <i nz-icon nzType="delete" theme="outline" nz-popconfirm nzTitle="确定删除该计划？"
                                (nzOnConfirm)="delete(plan)" nzPlacement="left"></i>
                         </a>
                     </td>
